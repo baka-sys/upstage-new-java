@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aska.repository.mapper.CustomerSetupMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.aska.repository.entity.CustomerSetup">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="audio_switch" property="audioSwitch" />
+        <result column="side_switch" property="sideSwitch" />
+        <result column="jump_switch" property="jumpSwitch" />
+        <result column="data_switch" property="dataSwitch" />
+        <result column="chat_record_sort" property="chatRecordSort" />
+        <result column="qrcode_switch" property="qrcodeSwitch" />
+        <result column="code_switch" property="codeSwitch" />
+        <result column="verify_code_switch" property="verifyCodeSwitch" />
+        <result column="verify_code_image" property="verifyCodeImage" />
+        <result column="verify_code_title" property="verifyCodeTitle" />
+        <result column="verify_questions_content" property="verifyQuestionsContent" />
+        <result column="verify_questions_image" property="verifyQuestionsImage" />
+        <result column="count_switch" property="countSwitch" />
+        <result column="ip_number" property="ipNumber" />
+        <result column="domestic_switch" property="domesticSwitch" />
+        <result column="seconds_switch" property="secondsSwitch" />
+        <result column="stop_switch" property="stopSwitch" />
+        <result column="stop_time_number" property="stopTimeNumber" />
+        <result column="wechat_switch" property="wechatSwitch" />
+        <result column="phone_model_switch" property="phoneModelSwitch" />
+        <result column="is_proxy_switch" property="isProxySwitch" />
+        <result column="form_settings" property="formSettings" />
+        <result column="version" property="version" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id, audio_switch, side_switch, jump_switch, data_switch, chat_record_sort, qrcode_switch, code_switch, verify_code_switch, verify_code_image, verify_code_title, verify_questions_content, verify_questions_image, count_switch, ip_number, domestic_switch, seconds_switch, stop_switch, stop_time_number, wechat_switch, phone_model_switch, is_proxy_switch, form_settings, version, update_time, create_time
+    </sql>
+
+</mapper>

@@ -1,0 +1,103 @@
+#开发环境
+server:
+  port: 9090
+  servlet:
+    context-path: /
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/customer_system?allowMultiQueries=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: chat42
+    type: com.alibaba.druid.pool.DruidDataSource
+    initial-size: 5
+    max-active: 20
+    min-idle: 3
+    # 配置获取连接等待超时的时间
+    max-wait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    time-between-eviction-runs-millis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    min-evictable-idle-time-millis: 300000
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    pool-prepared-statements: true
+    max-pool-prepared-statement-per-connection-size: 20
+    # 配置监控统计拦截的 Filter，去掉后监控界面 SQL 无法统计，wall 用于防火墙   日志 log4j
+    filters: stat,wall,slf4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    #password: dragonredis1891
+    #database: 0
+  freemarker:
+    template-loader-path: classpath:/templates/
+    charset: UTF-8
+    suffix: .ftl
+    content-type: text/html
+  quartz:
+    job-store-type: jdbc
+    initialize-schema: never
+    #定时任务启动开关，true-开  false-关
+    auto-startup: false
+    #延迟1秒启动定时任务
+    startup-delay: 1s
+    #启动时更新己存在的Job
+    overwrite-existing-jobs: true
+    jdbc:
+      initialize-schema: always
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: MyScheduler
+            instanceId: AUTO
+          jobStore:
+            class: org.springframework.scheduling.quartz.LocalDataSourceJobStore
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            tablePrefix: qrtz_
+            isClustered: false
+            misfireThreshold: 12000
+            clusterCheckinInterval: 15000
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 30
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
+swagger:
+  authorization:
+    name: Authorization
+    key-name: Authorization
+    auth-regex: ^(?!auth).*$
+  docket:
+    auth:
+      api-info:
+        title: "客服分发平台"
+        description: "客服分发平台Auth模块api及相关文档"
+        version: "1.0.0"
+        contact:
+          name: "**"
+          email: "**"
+      base-package: com.aska.client.controller.auth
+    configuration:
+      api-info:
+        title: "系统配置模块"
+        description: "系统配置模块api及相关文档"
+        version: "1.0.0"
+        contact:
+          name: "**"
+          email: "**"
+      base-package: com.aska.client.controller.configuration
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  global-config:
+    db-config:
+      logic-not-delete-value: 1
+      logic-delete-value: 0
+upload:
+  path: d:/upload

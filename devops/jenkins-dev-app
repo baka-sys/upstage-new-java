@@ -1,0 +1,46 @@
+def getHost(){
+    def remote = [:]
+    remote.name = 'root'
+    remote.user = 'root'
+    remote.password = 'dragon.1891'
+    remote.host = '60.204.147.81'
+    remote.port = 22
+    remote.allowAnyHosts = true
+    return remote
+}
+
+
+pipeline {
+     agent {
+            docker {
+                image 'maven:3.6.3-jdk-8'
+                args '-v $HOME/.m2:/root/.m2'
+            }
+        }
+
+    environment {
+        VERSION_ENVIRONMENT = "0.0.1-SNAPSHOT"
+        def server = ''
+    }
+
+    stages {
+        stage('初始服务器'){
+            steps {
+                script {
+                   server = getHost()
+                }
+            }
+        }
+        stage('构建') {
+            steps {
+                sh 'mvn -B -Dmaven.test.skip=true clean package'
+            }
+        }
+        stage('发布') {
+              steps {
+                    sshPut remote: server, from: "connector/target/connector.war", into: "/usr/local/tomcat/webapps"
+                    sshScript remote: server, script: "devops/start_dev.sh"
+              }
+        }
+    }
+}

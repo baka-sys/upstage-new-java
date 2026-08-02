@@ -1,0 +1,142 @@
+#测试环境
+server:
+  port: 8080
+  servlet:
+    context-path: /
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dragon?allowMultiQueries=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: dragon.1891
+    #password: root
+    #password: dragon123456.
+    type: com.alibaba.druid.pool.DruidDataSource
+    initial-size: 5
+    max-active: 20
+    min-idle: 3
+    # 配置获取连接等待超时的时间
+    max-wait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    time-between-eviction-runs-millis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    min-evictable-idle-time-millis: 300000
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    pool-prepared-statements: true
+    max-pool-prepared-statement-per-connection-size: 20
+    # 配置监控统计拦截的 Filter，去掉后监控界面 SQL 无法统计，wall 用于防火墙   日志 log4j
+    filters: stat,wall,slf4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  redis:
+    host: 127.0.0.1
+    port: 16379
+    password: dragonredis1891
+    database: 0
+    ## quartz定时任务,采用数据库方式
+  quartz:
+    job-store-type: jdbc
+    initialize-schema: never
+    #定时任务启动开关，true-开  false-关
+    auto-startup: false
+    #延迟1秒启动定时任务
+    startup-delay: 1s
+    #启动时更新己存在的Job
+    overwrite-existing-jobs: true
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: MyScheduler
+            instanceId: AUTO
+          jobStore:
+            class: org.springframework.scheduling.quartz.LocalDataSourceJobStore
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            tablePrefix: QRTZ_
+            isClustered: false
+            misfireThreshold: 12000
+            clusterCheckinInterval: 15000
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 1
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
+swagger:
+  authorization:
+    name: Authorization
+    key-name: Authorization
+    auth-regex: ^(?!auth).*$
+  docket:
+    auth:
+      api-info:
+        title: "CRM系统Auth模块"
+        description: "CRM系统Auth模块api及相关文档"
+        version: "1.0.0"
+        contact:
+          name: "**"
+          email: "**"
+      base-package: com.dragon.client.controller.auth
+    customer:
+      api-info:
+        title: "CRM系统Customer模块"
+        description: "CRM系统Customer模块api及相关文档"
+        version: "1.0.0"
+        contact:
+          name: "**"
+          email: "**"
+      base-package: com.dragon.client.controller.customer
+    contract:
+      api-info:
+        title: "CRM系统Contract模块"
+        description: "CRM系统Contract模块api及相关文档"
+        version: "1.0.0"
+        contact:
+          name: "**"
+          email: "**"
+      base-package: com.dragon.client.controller.contract
+    finance:
+      api-info:
+        title: "CRM系统Finance模块"
+        description: "CRM系统财务模块api及相关文档"
+        version: "1.0.0"
+        contact:
+          name: "**"
+          email: "**"
+      base-package: com.dragon.client.controller.finance
+    avttendance:
+      api-info:
+        title: "CRM系统attendance模块"
+        description: "CRM系统考勤日程模块api及相关文档"
+        version: "1.0.0"
+        contact:
+          name: "**"
+          email: "**"
+      base-package: com.dragon.client.controller.avttendance
+    vendor:
+      api-info:
+        title: "CRM系统vendor模块"
+        description: "CRM系统供应商以及产品模块api及相关文档"
+        version: "1.0.0"
+        contact:
+          name: "**"
+          email: "**"
+      base-package: com.dragon.client.controller.vendor
+    app:
+      api-info:
+        title: "CRM系统app模块"
+        description: "CRM系统考勤app模块api及相关文档"
+        version: "1.0.0"
+        contact:
+          name: "**"
+          email: "**"
+      base-package: com.dragon.client.controller.app
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  global-config:
+    db-config:
+      logic-not-delete-value: 1
+      logic-delete-value: 0

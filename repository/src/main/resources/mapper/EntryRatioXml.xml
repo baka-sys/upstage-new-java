@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aska.repository.mapper.EntryRatioMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.aska.repository.entity.EntryRatio">
+        <id column="id" property="id" />
+        <result column="main_user_id" property="mainUserId" />
+        <result column="main_carmine" property="mainCarmine" />
+        <result column="sub_user_id" property="subUserId" />
+        <result column="sub_carmine" property="subCarmine" />
+        <result column="main_radio_number" property="mainRadioNumber" />
+        <result column="sub_radio_number" property="subRadioNumber" />
+        <result column="main_number" property="mainNumber" />
+        <result column="sub_number" property="subNumber" />
+        <result column="switch_code" property="switchCode" />
+        <result column="main_number_total" property="mainNumberTotal" />
+        <result column="system_total_number" property="systemTotalNumber" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, main_user_id, main_carmine, sub_user_id, sub_carmine, main_radio_number, sub_radio_number, main_number, sub_number, switch_code, main_number_total, system_total_number, create_time, update_time
+    </sql>
+
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aska.repository.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.aska.repository.entity.User">
+        <id column="id" property="id" />
+        <result column="user_name" property="userName" />
+        <result column="notes" property="notes" />
+        <result column="img" property="img" />
+        <result column="password" property="password" />
+        <result column="user_account" property="userAccount" />
+        <result column="phone_number" property="phoneNumber" />
+        <result column="type" property="type" />
+        <result column="status" property="status" />
+        <result column="ip_address" property="ipAddress" />
+        <result column="account_id" property="accountId" />
+        <result column="equipment_code" property="equipmentCode" />
+        <result column="platform" property="platform" />
+        <result column="user_key" property="userKey" />
+        <result column="carmine" property="carmine" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="login_time" property="loginTime" />
+        <result column="expiration_date" property="expirationDate" />
+        <result column="start_time" property="startTime" />
+        <result column="days" property="days" />
+        <result column="active_state" property="activeState" />
+        <result column="browser_name" property="browserName" />
+        <result column="ip_district" property="ipDistrict" />
+        <result column="test_card" property="testCard" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_name, notes, img,start_time,test_card,browser_name,ip_district, active_state ,days,password, user_account, phone_number, type, status, ip_address, account_id, equipment_code, platform, user_key, carmine, create_time, update_time, login_time, expiration_date
+    </sql>
+
+</mapper>

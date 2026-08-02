@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aska.repository.mapper.UserCountMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.aska.repository.entity.UserCount">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="customer_id" property="customerId" />
+        <result column="login_time" property="loginTime" />
+        <result column="offline_time" property="offlineTime" />
+        <result column="client_reply" property="clientReply" />
+        <result column="customer_reply" property="customerReply" />
+        <result column="ip_address" property="ipAddress" />
+        <result column="city_name" property="cityName" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id, customer_id, login_time, offline_time, client_reply, customer_reply, ip_address, city_name, update_time, create_time
+    </sql>
+
+</mapper>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.5</version>
+        <relativePath />
+    </parent>
+    <groupId>com.aska</groupId>
+    <artifactId>management</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>management</name>
+    <description>management</description>
+    <packaging>pom</packaging>
+    <properties>
+        <java.version>1.8</java.version>
+        <hutool.version>5.3.9</hutool.version>
+        <protobuf.version>3.6.1</protobuf.version>
+        <guava.version>16.0.1</guava.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <swagger2.version>2.9.2</swagger2.version>
+        <swagger-ui.version>2.9.2</swagger-ui.version>
+    </properties>
+    <modules>
+        <module>client</module>
+        <module>repository</module>
+        <module>logical</module>
+        <module>common</module>
+        <module>upstage</module><!--总后台-->
+    </modules>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.aska</groupId>
+                <artifactId>client</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aska</groupId>
+                <artifactId>common</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aska</groupId>
+                <artifactId>repository</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aska</groupId>
+                <artifactId>logical</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aska</groupId>
+                <artifactId>upstage</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
